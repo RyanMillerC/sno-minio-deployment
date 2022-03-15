@@ -7,7 +7,7 @@ metadata:
     route.openshift.io/termination: edge
 spec:
   rules:
-    - host: 'minio.apps.managed-dev.taco.moe'
+    - host: 'minio.apps.managed-prod.taco.moe'
       http:
         paths:
         - path: /
@@ -17,7 +17,7 @@ spec:
               name: minio
               port:
                 number: 9000
-    - host: 'minio-console.apps.managed-dev.taco.moe'
+    - host: 'minio-console.apps.managed-prod.taco.moe'
       http:
         paths:
         - path: /
