@@ -4,10 +4,10 @@
 This means that you can run your own S3 deployment from [SNO (Single-Node
 OpenShift)] in a lab environment.
 
-This repository contains instructions and Kubernetes manifest files for
-deploying MinIO onto a SNO instance. **This code is for lab/development/testing
-purposes only and is NOT intended for production use.** Leverage [OpenShift
-Data Foundation] on a full OpenShift cluster for production use.
+This repository contains instructions and Helm chart for deploying MinIO onto a
+SNO instance. **This code is for lab/development/testing purposes only and is
+NOT intended for production use.** Leverage [OpenShift Data Foundation] on a
+full OpenShift cluster for production use.
 
 This repo was forked from [k3s-minio-deployment
 (@sleighzy)](https://github.com/sleighzy/k3s-minio-deployment/) and modified to
