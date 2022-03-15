@@ -8,6 +8,16 @@ spec:
     - protocol: TCP
       name: minio
       port: 9000
+  selector:
+    app: minio
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: minio-console
+  namespace: minio
+spec:
+  ports:
     - protocol: TCP
       name: minio-console
       port: 9001
