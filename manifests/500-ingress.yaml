@@ -17,6 +17,16 @@ spec:
               name: minio
               port:
                 number: 9000
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minio
+  namespace: minio
+  annotations:
+    route.openshift.io/termination: edge
+spec:
+  rules:
     - host: 'minio-console.apps.managed-prod.taco.moe'
       http:
         paths:
