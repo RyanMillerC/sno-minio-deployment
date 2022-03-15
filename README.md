@@ -321,7 +321,7 @@ aws:
 
 [![MIT license]](https://lbesson.mit-license.org/)
 
-[sno (single node openshift)]:
+[sno (single-node openshift)]:
   https://www.redhat.com/en/blog/meet-single-node-openshift-our-smallest-openshift-footprint-edge-architectures
 [keycloak]: https://www.keycloak.org/
 [local path provisioner]: https://rancher.com/docs/k3s/latest/en/storage/
