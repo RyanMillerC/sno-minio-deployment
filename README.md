@@ -29,11 +29,13 @@ $ oc new-project minio
 $ helm install minio .
 ```
 
----
+Once deployed, you can access the API and console using the DNS names specified
+in values.yaml. To log into the web console, use the `accessKey` value as the
+username and `secretAccessKey` as the password.
 
-# Everything below this line is from the original project
+## Additional Info
 
-## OpenID Connect and Keycloak
+### OpenID Connect and Keycloak
 
 MinIO supports authentication using OpenID Connect and providers such as
 [Keycloak]. If you are wanting to OpenID Connect then add the below environment
@@ -319,19 +321,12 @@ aws:
 
 [![MIT license]](https://lbesson.mit-license.org/)
 
-[docker registry]: https://docs.docker.com/registry/
-[external hard drive for persistent storage]:
-  https://github.com/sleighzy/raspberry-pi-k3s-homelab/blob/main/k3s.md#external-hard-drive-for-persistent-storage
-[grafana loki]: https://grafana.com/oss/loki/
-[k3s]: https://k3s.io/
+[sno (single node openshift)]:
+  https://www.redhat.com/en/blog/meet-single-node-openshift-our-smallest-openshift-footprint-edge-architectures
 [keycloak]: https://www.keycloak.org/
 [local path provisioner]: https://rancher.com/docs/k3s/latest/en/storage/
 [minio]: https://min.io/
 [minio client (mc)]: https://docs.min.io/docs/minio-client-complete-guide.html
 [mit license]: https://img.shields.io/badge/License-MIT-blue.svg
-[raspberry-pi-k3s-homelab]:
-  https://github.com/sleighzy/raspberry-pi-k3s-homelab/blob/main/k3s.md
-[restic]: https://restic.net/
-[traefik v2]: https://traefik.io/traefik/
-[v1.0.0 tag]:
-  https://github.com/sleighzy/k3s-minio-deployment/releases/tag/v1.0.0
+[openshift data foundation]:
+  https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation
