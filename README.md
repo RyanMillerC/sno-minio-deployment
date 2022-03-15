@@ -1,31 +1,24 @@
-# MinIO S3
+# MinIO on SNO (Single-Node OpenShift)
 
-[MinIO] is an open source object storage server with support for the S3 API.
-This means that you can run your very own S3 deployment from your homelab.
-
-My uses of this include:
-
-- object storage for a private [Docker Registry]
-- storing backups created by [Restic]
-- backend storage for logs ingested by [Grafana Loki]
-- any other random things
+[MinIO] is an open-source object storage server with support for the S3 API.
+This means that you can run your own S3 deployment from [SNO (Single-Node
+OpenShift)] in a lab environment.
 
 This repository contains instructions and Kubernetes manifest files for
-deploying MinIO into a K3s cluster.
+deploying MinIO onto a SNO instance. **This code is for lab/development/testing
+purposes only and is NOT intended for production use.** Leverage [OpenShift
+Data Foundation] on a full OpenShift cluster for production use.
 
-**UPDATE: 7 Nov 2021**: This repository has been upgraded to
-RELEASE.2021-10-27T16-29-42Z from MinIO RELEASE.2020-10-28T08-16-50Z-arm64.
-There have been a number of changes between versions so check the release notes
-for more information if you are upgrading. The configuration and instructions
-from this repository for the previous release are still available from the
-[v1.0.0 tag].
+This repo was forked from [k3s-minio-deployment
+(@sleighzy)](https://github.com/sleighzy/k3s-minio-deployment/) and modified to
+work with OpenShift.
 
-## K3s Deployment
+## Prerequisists
 
-[K3s] is a lightweight, certified Kubernetes distribution, for production
-workloads from Rancher Labs. I run K3s on my Raspberry Pi cluster, into which
-MinIO has been deployed. See [raspberry-pi-k3s-homelab] for more information on
-this.
+SNO is deployed out-of-the-box without a StorageClass. You will need a
+filestorage-backed PersistantVolume (PV) for MinIO to use.
+
+**Insert link to local-path-provisioner deploy repo**
 
 ### Create Root User and Password
 
