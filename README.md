@@ -18,7 +18,8 @@ work with OpenShift.
 SNO is deployed out-of-the-box without a StorageClass. You will need a
 filestorage-backed PersistantVolume (PV) for MinIO to use.
 
-**Insert link to local-path-provisioner deploy repo**
+[sno-local-path-provisioner] can provide a dynamic StorageClass to meet this
+requirement.
 
 ## Deploying
 
@@ -321,8 +322,6 @@ aws:
 
 [![MIT license]](https://lbesson.mit-license.org/)
 
-[sno (single-node openshift)]:
-  https://www.redhat.com/en/blog/meet-single-node-openshift-our-smallest-openshift-footprint-edge-architectures
 [keycloak]: https://www.keycloak.org/
 [local path provisioner]: https://rancher.com/docs/k3s/latest/en/storage/
 [minio]: https://min.io/
@@ -330,3 +329,7 @@ aws:
 [mit license]: https://img.shields.io/badge/License-MIT-blue.svg
 [openshift data foundation]:
   https://www.redhat.com/en/technologies/cloud-computing/openshift-data-foundation
+[sno (single-node openshift)]:
+  https://www.redhat.com/en/blog/meet-single-node-openshift-our-smallest-openshift-footprint-edge-architectures
+[sno-local-path-provisioner]:
+  https://github.com/RyanMillerC/sno-local-path-provisioner
