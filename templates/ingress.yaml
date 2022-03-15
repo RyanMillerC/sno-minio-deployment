@@ -7,7 +7,7 @@ metadata:
     route.openshift.io/termination: edge
 spec:
   rules:
-    - host: 'minio.apps.managed-prod.taco.moe'
+    - host: "{{ .Values.ingress.minioApiDnsName }}"
       http:
         paths:
         - path: /
@@ -27,7 +27,7 @@ metadata:
     route.openshift.io/termination: edge
 spec:
   rules:
-    - host: 'minio-console.apps.managed-prod.taco.moe'
+    - host: "{{ .Values.ingress.minioConsoleDnsName }}"
       http:
         paths:
         - path: /
