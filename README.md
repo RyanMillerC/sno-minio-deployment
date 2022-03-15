@@ -20,77 +20,24 @@ filestorage-backed PersistantVolume (PV) for MinIO to use.
 
 **Insert link to local-path-provisioner deploy repo**
 
-### Create Root User and Password
+## Deploying
 
-The username and password of the root user need to be created as secrets and
-provided as environment variables. I have used a similar format as the AWS
-secret key and secret access key, as this was the pattern used for earlier MinIO
-naming conventions. This highlighted a couple of gotchas with the S3 url format
-when integrating some apps with this, which I have documented in this README.md
-file.
+Update `./values.yaml` with values for your environment. Then, run:
 
-These need to be in base64 format as they will be added to the
-`200-secrets.yaml` file to be created as secrets in Kubernetes.
-
-```sh
-$ echo -n 'my-access-key' | base64
-bXktYWNjZXNzLWtleQ==
-$ echo -n 'myXXXxxx/secretXXXXxxx/keyXXxxx' | base64
-bXlYWFh4eHgvc2VjcmV0WFhYWHh4eC9rZXlYWHh4eA==
+```bash
+$ oc new-project minio
+$ helm install minio .
 ```
 
-### Persistent Volume Claim
+---
 
-The `100-pvc.yaml` file contains a Persistent Volume Claim using the K3s [local
-path provisioner] `local-path` storage class. In my homelab I have an external
-hard drive to store these objects. The `400-deployment.yaml` file contains node
-affinity configuration to ensure that the pod is scheduled onto the node
-containing the external storage. See [External Hard Drive for Persistent
-Storage] for more information on my K3s configuration for this.
+# Everything below this line is from the original project
 
-The below section from the `400-deployment.yaml` file can be removed if you do
-not wish to use node affinity, e.g. only have a single node, or have a NFS
-server for shared storage, etc.
-
-```yaml
-affinity:
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-        - matchExpressions:
-            - key: disktype
-              operator: In
-              values:
-                - hdd
-```
-
-### Ingress Route
-
-My K3s cluster uses [Traefik v2] as the Kubernetes ingress controller and the
-`IngressRoute` resource it provides. You can just as easily use the standard
-Kubernetes `Ingress` resource, or other such ingress controller annotations or
-configuration methods.
-
-The `500-ingressroute.yaml` file specifies the usage of TLS and associated
-certificate resolver. You should always use HTTPS when accessing resources,
-especially over the internet. You can update that file as necessary to work with
-your deployment, e.g. using a different Traefik endpoint and removing the `tls`
-section. In this example `tlsresolver` is a certificate resolver configured in
-Traefik to use Let's Encrypt and the `tlsChallenge` type.
-
-Note that there is a `console.minio.example.com` entry as well as a
-`minio.example.com`. When accessing MinIO via the browser using
-<https://minio.example.com> you will be automatically redirected to the MinIO
-Console at <https://console.minio.example.com>. The MinIO Console is used for
-both administering the system, as well as standard user access when navigating
-buckets.
-
-### OpenID Connect and Keycloak
+## OpenID Connect and Keycloak
 
 MinIO supports authentication using OpenID Connect and providers such as
-[Keycloak]. If you are wanting to use username and password authentication only,
-and not wanting to integrate with OpenID Connect then the below environment
-variables can be removed from the `400-deployment.yaml` file.
+[Keycloak]. If you are wanting to OpenID Connect then add the below environment
+variables to `./templates/deployment.yaml`.
 
 ```yaml
 - name: MINIO_IDENTITY_OPENID_CONFIG_URL
