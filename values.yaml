@@ -12,4 +12,4 @@ ingress:
 # and the web management console.
 user:
   accessKey: "my-access-key"
-  secretAccessKey: "myXXXxxx/secretXXXXxxx/keyXXxxx"
+  secretAccessKey: "my-secret-key"
